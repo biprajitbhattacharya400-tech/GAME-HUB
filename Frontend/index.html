@@ -3,92 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Game Hub – Premium Rock Paper Scissors</title>
+    <title>Game Hub 🎮</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Interactive Cursor Follower -->
     <div id="cursor-glow"></div>
-    
     <div id="confetti-container"></div>
     
-    <!-- Ambient Floating Orbs -->
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
     <div class="bg-orb orb-3"></div>
 
-    <!-- Audio specifically for Lose condition -->
     <audio id="meme-sound" src="fah.mp3" preload="auto"></audio>
 
-    <div class="game-container">
-        <header>
-            <h1>🎮 Game Hub</h1>
-            <h2>Rock Paper Scissors</h2>
-        </header>
-
-        <div class="scoreboard-wrapper">
-            <div class="score-card player" id="card-player">
-                <span class="label">Player</span>
-                <span id="player-score" class="score-value">0</span>
-                <div class="progress-bar"><div class="progress-fill fill-blue"></div></div>
-            </div>
-            <div class="score-card computer" id="card-computer">
-                <span class="label">Computer</span>
-                <span id="computer-score" class="score-value">0</span>
-                <div class="progress-bar"><div class="progress-fill fill-purple"></div></div>
-            </div>
+    <header class="main-header">
+        <h1>Game Hub 🎮</h1>
+        <div class="welcome-message">
+            <p class="typing-text">Welcome to Biprajit's Gaming Arcade</p>
         </div>
+    </header>
 
-        <div class="choices-container">
-            <button class="choice-btn tilt-btn card-lift" data-choice="rock" aria-label="Rock">
-                <span class="emoji">👊</span>
-                <span class="text">Rock</span>
-            </button>
-            <button class="choice-btn tilt-btn card-lift" data-choice="paper" aria-label="Paper">
-                <span class="emoji">✋</span>
-                <span class="text">Paper</span>
-            </button>
-            <button class="choice-btn tilt-btn card-lift" data-choice="scissor" aria-label="Scissor">
-                <span class="emoji">✌</span>
-                <span class="text">Scissor</span>
-            </button>
-        </div>
-
-        <div class="arena">
-            <div id="loading" class="hidden">
-                <span class="pulse-ring"></span>
-                <span>Computer is thinking<span class="dots"></span> 🤖</span>
-            </div>
-            
-            <div id="battle-area" class="hidden">
-                <div class="move-box player-move-box">
-                    <div class="move" id="player-move"></div>
-                </div>
-                <div class="vs-badge glow-pulse">VS</div>
-                <div class="move-box computer-move-box">
-                    <div class="move" id="computer-move"></div>
+    <!-- 🌟 DASHBOARD VIEW 🌟 -->
+    <section id="dashboard" class="view-section active">
+        <div class="game-grid">
+            <div class="game-card tilt-btn" data-game="rps">
+                <div class="game-icon">✌️</div>
+                <h3>Rock Paper Scissors</h3>
+                <p>Play against our AI 🤖</p>
+                <div class="card-footer">
+                    <button class="play-btn">Play Now</button>
                 </div>
             </div>
             
-            <div id="result-text" class="hidden"></div>
-        </div>
-
-        <div class="footer-controls">
-            <div class="history-panel">
-                <h3>Last Matches</h3>
-                <ul id="history-list">
-                    <li class="empty-history">Ready to play!</li>
-                </ul>
+            <div class="game-card tilt-btn" data-game="tictactoe">
+                <div class="game-icon">❌⭕</div>
+                <h3>Tic Tac Toe</h3>
+                <p>Multiplayer classic vs AI</p>
+                <div class="card-footer">
+                    <button class="play-btn">Play Now</button>
+                </div>
             </div>
             
-            <button id="reset-btn" class="secondary-btn tilt-btn">↻ Reset Score</button>
+            <div class="game-card tilt-btn" data-game="snake">
+                <div class="game-icon">🐍</div>
+                <h3>Snake</h3>
+                <p>Retro action powered by API</p>
+                <div class="card-footer">
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- 🎮 ROCK PAPER SCISSORS 🎮 -->
+    <section id="rps-game" class="view-section">
+        <div class="game-nav">
+            <button class="secondary-btn tilt-btn back-btn-shared" data-target="rps">← Back to Menu</button>
+        </div>
+        <div class="game-container">
+            <header><h2>Rock Paper Scissors</h2></header>
+            <div class="scoreboard-wrapper">
+                <div class="score-card player" id="card-player">
+                    <span class="label">Player</span>
+                    <span id="player-score" class="score-value">0</span>
+                    <div class="progress-bar"><div class="progress-fill fill-blue"></div></div>
+                </div>
+                <div class="score-card computer" id="card-computer">
+                    <span class="label">Computer</span>
+                    <span id="computer-score" class="score-value">0</span>
+                    <div class="progress-bar"><div class="progress-fill fill-purple"></div></div>
+                </div>
+            </div>
+            <div class="choices-container">
+                <button class="choice-btn tilt-btn card-lift rps-btn" data-choice="rock"><span class="emoji">👊</span><span class="text">Rock</span></button>
+                <button class="choice-btn tilt-btn card-lift rps-btn" data-choice="paper"><span class="emoji">✋</span><span class="text">Paper</span></button>
+                <button class="choice-btn tilt-btn card-lift rps-btn" data-choice="scissor"><span class="emoji">✌</span><span class="text">Scissor</span></button>
+            </div>
+            <div class="arena">
+                <div id="loading" class="hidden">
+                    <span class="pulse-ring"></span>
+                    <span>AI is thinking<span class="dots"></span> 🤖</span>
+                </div>
+                <div id="battle-area" class="hidden">
+                    <div class="move-box player-move-box"><div class="move" id="player-move"></div></div>
+                    <div class="vs-badge glow-pulse">VS</div>
+                    <div class="move-box computer-move-box"><div class="move" id="computer-move"></div></div>
+                </div>
+                <div id="result-text" class="hidden"></div>
+            </div>
+            <div class="footer-controls">
+                <div class="history-panel">
+                    <h3>Match History</h3>
+                    <ul id="history-list"><li class="empty-history">Ready to play!</li></ul>
+                </div>
+                <button id="reset-btn" class="secondary-btn tilt-btn">↻ Reset Score</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎮 TIC TAC TOE 🎮 -->
+    <section id="tictactoe-game" class="view-section">
+        <div class="game-nav">
+            <button class="secondary-btn tilt-btn back-btn-shared" data-target="tictactoe">← Back to Menu</button>
+        </div>
+        <div class="game-container min-padding-container">
+            <header><h2>Tic Tac Toe</h2></header>
+            <div id="ttt-status" class="game-status-text">Your turn! (X)</div>
+            <div class="ttt-wrapper">
+                 <!-- Loader for API -->
+                 <div id="ttt-loading" class="hidden loading-overlay"><span class="pulse-ring"></span></div>
+                 <div id="ttt-board" class="ttt-grid">
+                     <!-- 9 Cells generated dynamically or static -->
+                     <div class="ttt-cell" data-index="0"></div><div class="ttt-cell" data-index="1"></div><div class="ttt-cell" data-index="2"></div>
+                     <div class="ttt-cell" data-index="3"></div><div class="ttt-cell" data-index="4"></div><div class="ttt-cell" data-index="5"></div>
+                     <div class="ttt-cell" data-index="6"></div><div class="ttt-cell" data-index="7"></div><div class="ttt-cell" data-index="8"></div>
+                 </div>
+            </div>
+            <div class="footer-controls" style="margin-top: 1.5rem;">
+                <button id="ttt-reset" class="secondary-btn tilt-btn">↻ Reset Board</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎮 SNAKE GAME 🎮 -->
+    <section id="snake-game" class="view-section">
+        <div class="game-nav">
+            <button class="secondary-btn tilt-btn back-btn-shared" data-target="snake">← Back to Menu</button>
+        </div>
+        <div class="game-container snake-wrapper-container">
+            <header><h2>Snake Console</h2></header>
+            <div class="snake-header-info">Score: <span id="snake-score-val" class="glow-text">0</span></div>
+            
+            <div class="snake-board-relative">
+                <div id="snake-loading" class="hidden loading-overlay snake-overlay-load"><span class="pulse-ring"></span></div>
+                <div id="snake-board" class="snake-grid"></div>
+                <div id="snake-overlay" class="hidden dialog-overlay">
+                    <span id="snake-overlay-msg">Game Over!</span>
+                    <button id="snake-reset" class="play-btn">Play Again</button>
+                </div>
+            </div>
+
+            <!-- Mobile Touch D-PAD -->
+            <div class="mobile-controls">
+                <button class="dpad tilt-btn" id="btn-up">▲</button>
+                <div class="dpad-row">
+                    <button class="dpad tilt-btn" id="btn-left">◀</button>
+                    <button class="dpad tilt-btn" id="btn-down">▼</button>
+                    <button class="dpad tilt-btn" id="btn-right">▶</button>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <footer class="branding">
         Made with <span class="heart">❤️</span> by <span class="author">Biprajit</span>
     </footer>
+    
     <script src="script.js"></script>
+    <script src="games/rps.js"></script>
+    <script src="games/tictactoe.js"></script>
+    <script src="games/snake.js"></script>
 </body>
 </html>
