@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Game Hub – Premium Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Interactive Cursor Follower -->
+    <div id="cursor-glow"></div>
+    
+    <div id="confetti-container"></div>
+    
+    <!-- Ambient Floating Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Audio specifically for Lose condition -->
+    <audio id="meme-sound" src="fah.mp3" preload="auto"></audio>
+
+    <div class="game-container">
+        <header>
+            <h1>🎮 Game Hub</h1>
+            <h2>Rock Paper Scissors</h2>
+        </header>
+
+        <div class="scoreboard-wrapper">
+            <div class="score-card player" id="card-player">
+                <span class="label">Player</span>
+                <span id="player-score" class="score-value">0</span>
+                <div class="progress-bar"><div class="progress-fill fill-blue"></div></div>
+            </div>
+            <div class="score-card computer" id="card-computer">
+                <span class="label">Computer</span>
+                <span id="computer-score" class="score-value">0</span>
+                <div class="progress-bar"><div class="progress-fill fill-purple"></div></div>
+            </div>
+        </div>
+
+        <div class="choices-container">
+            <button class="choice-btn tilt-btn card-lift" data-choice="rock" aria-label="Rock">
+                <span class="emoji">👊</span>
+                <span class="text">Rock</span>
+            </button>
+            <button class="choice-btn tilt-btn card-lift" data-choice="paper" aria-label="Paper">
+                <span class="emoji">✋</span>
+                <span class="text">Paper</span>
+            </button>
+            <button class="choice-btn tilt-btn card-lift" data-choice="scissor" aria-label="Scissor">
+                <span class="emoji">✌</span>
+                <span class="text">Scissor</span>
+            </button>
+        </div>
+
+        <div class="arena">
+            <div id="loading" class="hidden">
+                <span class="pulse-ring"></span>
+                <span>Computer is thinking<span class="dots"></span> 🤖</span>
+            </div>
+            
+            <div id="battle-area" class="hidden">
+                <div class="move-box player-move-box">
+                    <div class="move" id="player-move"></div>
+                </div>
+                <div class="vs-badge glow-pulse">VS</div>
+                <div class="move-box computer-move-box">
+                    <div class="move" id="computer-move"></div>
+                </div>
+            </div>
+            
+            <div id="result-text" class="hidden"></div>
+        </div>
+
+        <div class="footer-controls">
+            <div class="history-panel">
+                <h3>Last Matches</h3>
+                <ul id="history-list">
+                    <li class="empty-history">Ready to play!</li>
+                </ul>
+            </div>
+            
+            <button id="reset-btn" class="secondary-btn tilt-btn">↻ Reset Score</button>
+        </div>
+    </div>
+    
+    <footer class="branding">
+        Made with <span class="heart">❤️</span> by <span class="author">Biprajit</span>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
